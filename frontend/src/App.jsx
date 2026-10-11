@@ -6,7 +6,7 @@ function AuthLayout({ children, title, subtitle, switchText, switchTo }) {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <div className="brand">📚 My Dairy</div>
+        <div className="brand">📚 Books App</div>
         <h1>{title}</h1>
         <p className="muted">{subtitle}</p>
         {children}
@@ -37,7 +37,7 @@ function Login() {
   return (
     <AuthLayout
       title="Welcome back"
-      subtitle="Login to manage your Dairy."
+      subtitle="Login to manage your books."
       switchText="Don't have an account?"
       switchTo={{ path: "/signup", label: "Sign up" }}
     >
@@ -74,7 +74,7 @@ function Signup() {
   return (
     <AuthLayout
       title="Create account"
-      subtitle="Sign up to start managing Your Dairy."
+      subtitle="Sign up to start managing books."
       switchText="Already have an account?"
       switchTo={{ path: "/login", label: "Login" }}
     >
@@ -109,7 +109,7 @@ function Home() {
       const { data } = await api.get("/books");
       setBooks(data);
     } catch {
-      setError("Could not load Dairy. Check your backend.");
+      setError("Could not load books. Check your backend.");
     }
   }
 
@@ -133,7 +133,7 @@ function Home() {
       setEditingId(null);
       loadBooks();
     } catch (err) {
-      setError(err.response?.data?.message || "Could not save Dairy");
+      setError(err.response?.data?.message || "Could not save book");
     }
   }
 
@@ -144,12 +144,12 @@ function Home() {
   }
 
   async function deleteBook(id) {
-    if (!confirm("Delete this Diary?")) return;
+    if (!confirm("Delete this book?")) return;
     try {
       await api.delete(`/books/${id}`);
       loadBooks();
     } catch {
-      setError("Could not delete Dairy");
+      setError("Could not delete book");
     }
   }
 
@@ -157,7 +157,7 @@ function Home() {
     <div className="home-page">
       <header>
         <div>
-          <div className="brand">📚 My Dairy</div>
+          <div className="brand">📚 Books App</div>
           <span className="welcome">Hello, {user.name || "Reader"} 👋</span>
         </div>
         <button className="logout" onClick={logout}>Logout</button>
@@ -168,7 +168,7 @@ function Home() {
           <h1>{editingId ? "Edit Book" : "Add a Book"}</h1>
           <form onSubmit={saveBook} className="book-grid">
             <div>
-              <label>Today's Update</label>
+              <label>Book Title</label>
               <input value={form.title} onChange={e => setForm({...form, title: e.target.value})} placeholder="Book title" required />
             </div>
             <div>
