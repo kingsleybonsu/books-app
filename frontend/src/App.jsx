@@ -6,7 +6,7 @@ function AuthLayout({ children, title, subtitle, switchText, switchTo }) {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <div className="brand">📚 Books App</div>
+        <div className="brand">📚 My Dairy</div>
         <h1>{title}</h1>
         <p className="muted">{subtitle}</p>
         {children}
@@ -157,7 +157,7 @@ function Home() {
     <div className="home-page">
       <header>
         <div>
-          <div className="brand">📚 Books App</div>
+          <div className="brand">📚 My Dairy</div>
           <span className="welcome">Hello, {user.name || "Reader"} 👋</span>
         </div>
         <button className="logout" onClick={logout}>Logout</button>
@@ -168,7 +168,7 @@ function Home() {
           <h1>{editingId ? "Edit Book" : "Add a Book"}</h1>
           <form onSubmit={saveBook} className="book-grid">
             <div>
-              <label>Book Title</label>
+              <label>Today's Update</label>
               <input value={form.title} onChange={e => setForm({...form, title: e.target.value})} placeholder="Book title" required />
             </div>
             <div>
