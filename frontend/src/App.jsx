@@ -37,7 +37,7 @@ function Login() {
   return (
     <AuthLayout
       title="Welcome back"
-      subtitle="Login to manage your books."
+      subtitle="Login to manage your Dairy."
       switchText="Don't have an account?"
       switchTo={{ path: "/signup", label: "Sign up" }}
     >
@@ -74,7 +74,7 @@ function Signup() {
   return (
     <AuthLayout
       title="Create account"
-      subtitle="Sign up to start managing books."
+      subtitle="Sign up to start managing Your Dairy."
       switchText="Already have an account?"
       switchTo={{ path: "/login", label: "Login" }}
     >
@@ -109,7 +109,7 @@ function Home() {
       const { data } = await api.get("/books");
       setBooks(data);
     } catch {
-      setError("Could not load books. Check your backend.");
+      setError("Could not load Dairy. Check your backend.");
     }
   }
 
@@ -133,7 +133,7 @@ function Home() {
       setEditingId(null);
       loadBooks();
     } catch (err) {
-      setError(err.response?.data?.message || "Could not save book");
+      setError(err.response?.data?.message || "Could not save Dairy");
     }
   }
 
@@ -144,12 +144,12 @@ function Home() {
   }
 
   async function deleteBook(id) {
-    if (!confirm("Delete this book?")) return;
+    if (!confirm("Delete this Diary?")) return;
     try {
       await api.delete(`/books/${id}`);
       loadBooks();
     } catch {
-      setError("Could not delete book");
+      setError("Could not delete Dairy");
     }
   }
 
